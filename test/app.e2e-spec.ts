@@ -5,6 +5,7 @@ import * as request from 'supertest';
 
 import { AuthDto } from '@app/auth/dto';
 import { AppModule } from '@app/app.module';
+import { EditUserDto } from '@app/user/dto';
 import { PrismaService } from '@app/prisma/prisma.service';
 
 describe('AppController (e2e)', () => {
@@ -111,36 +112,36 @@ describe('AppController (e2e)', () => {
     });
   });
 
-  // describe('User', () => {
-  //   describe('Get me', () => {
-  //     it('should get current user', () => {
-  //       return pactum
-  //         .spec()
-  //         .get('/users/me')
-  //         .withHeaders({
-  //           Authorization: 'Bearer $S{userAt}',
-  //         })
-  //         .expectStatus(200);
-  //     });
-  //   });
+  describe('User', () => {
+    describe('Get me', () => {
+      it('should get current user', () => {
+        return pactum
+          .spec()
+          .get('/users/me')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .expectStatus(200);
+      });
+    });
 
-  //   describe('Edit user', () => {
-  //     it('should edit user', () => {
-  //       const dto: EditUserDto = {
-  //         firstName: 'Vladimir',
-  //         email: 'vlad@codewithvlad.com',
-  //       };
-  //       return pactum
-  //         .spec()
-  //         .patch('/users')
-  //         .withHeaders({
-  //           Authorization: 'Bearer $S{userAt}',
-  //         })
-  //         .withBody(dto)
-  //         .expectStatus(200)
-  //         .expectBodyContains(dto.firstName)
-  //         .expectBodyContains(dto.email);
-  //     });
-  //   });
-  // });
+    describe('Edit user', () => {
+      it('should edit user', () => {
+        const dto: EditUserDto = {
+          firstName: 'Vladimir',
+          email: 'vlad@codewithvlad.com',
+        };
+        return pactum
+          .spec()
+          .patch('/users')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .withBody(dto)
+          .expectStatus(200)
+          .expectBodyContains(dto.firstName)
+          .expectBodyContains(dto.email);
+      });
+    });
+  });
 });
