@@ -5,6 +5,9 @@
   "author": "Okwukwe Ewurum",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "db:dev:rm": "docker compose rm dev-db -s -f -v",
     "db:dev:up": "docker compose up dev-db -d",
